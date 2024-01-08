@@ -6,6 +6,7 @@
 
 source "_shell/library.sh"
 
+echo "Development dashboard"
 echo " "
 echo " "
 
