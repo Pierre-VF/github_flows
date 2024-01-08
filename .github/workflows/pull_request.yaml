@@ -7,6 +7,9 @@ jobs:
   Validate-PR:
 
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
@@ -25,6 +28,17 @@ jobs:
 
       - name: Install packages
         run: ./dashboard.sh install
+
+      - name: Run precommits (for code formatting)
+        run: ./dashboard.sh precommit
+
+      - name: Commit changes back
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: github_actions
+          message: "Formatting code with precommits"
+          add: "."
+          push: true
 
       - name: Run tests
         run: ./dashboard.sh test

@@ -1,0 +1,13 @@
+repos:
+  # Version/revs updated to latest available on 08/01/2023
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks:
+      - id: black
+        language_version: python3 # Should be a command that runs python3.6+
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: [ "--profile", "black" ]

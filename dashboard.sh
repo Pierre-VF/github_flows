@@ -11,11 +11,16 @@ echo " "
 
 if [ "$1" == 'help' ];
   then
-    echo ">> Options: help, test, install, deploy"
+    echo ">> Options: help, test, install, deploy, precommit"
 
 elif [ "$1" == 'install' ];
   then
     install_dummy &&
+    echo "DONE"
+
+elif [ "$1" == 'precommit' ];
+  then
+    pre-commit run --all &&
     echo "DONE"
 
 elif [ "$1" == 'test' ];
